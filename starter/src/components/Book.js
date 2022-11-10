@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function Book({ book }) {
+  const [bookShelf, setBookShelf] = useState(book.shelf || 'none');
   return (
     <div className="book">
       <div className="book-top">
@@ -13,7 +15,7 @@ export default function Book({ book }) {
           }}
         ></div>
         <div className="book-shelf-changer">
-          <select>
+          <select defaultValue={bookShelf} onChange={e => setBookShelf(e.target.value)}>
             <option value="none" disabled>
               Move to...
             </option>
