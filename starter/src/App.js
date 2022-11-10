@@ -27,6 +27,7 @@ function App() {
           setShowSearchpage={setShowSearchpage}
             showSearchPage={showSearchPage}
             books={books}
+            setBooks={setBooks}
         />
       )}
     </div>
