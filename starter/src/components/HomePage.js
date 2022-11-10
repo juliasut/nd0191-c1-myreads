@@ -12,7 +12,7 @@ export default function HomePage(props) {
         <BookShelves books={books} setBooks={setBooks}/>
       </div>
       <div className="open-search">
-        <a onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</a>
+        <button onClick={() => setShowSearchpage(!showSearchPage)}>Add a book</button>
       </div>
     </div>
   );

@@ -5,12 +5,12 @@ export default function Search(props) {
   return (
     <div className="search-books">
           <div className="search-books-bar">
-            <a
+            <button
               className="close-search"
               onClick={() => setShowSearchpage(!showSearchPage)}
             >
               Close
-            </a>
+            </button>
             <div className="search-books-input-wrapper">
               <input
                 type="text"
