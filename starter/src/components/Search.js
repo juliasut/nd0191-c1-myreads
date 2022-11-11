@@ -13,14 +13,12 @@ export default function Search(props) {
 
   const searchBooks = async (query) => {
     search(query).then((results) => {
-      if (results) {
+      console.log(results)
+      if (results && !results.error) {
         setSearchedBooks(
           results.map((book) => {
             const foundBook = books.find((b) => b.id === book.id);
-            if (foundBook) {
-              return { ...book, shelf: foundBook.shelf };
-            }
-            return { ...book, shelf: 'none' };
+            return { ...book, shelf: foundBook?.shelf || 'none' };
           })
         );
       } else {
