@@ -1,9 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
 import { update, getAll } from '../BooksAPI';
 
 export default function Book({ book, setBooks }) {
-  const [bookShelf, setBookShelf] = useState(book.shelf || 'none');
   const fallbackThumbnailLink = 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
   return (
     <div className="book">
@@ -18,17 +16,16 @@ export default function Book({ book, setBooks }) {
         ></div>
         <div className="book-shelf-changer">
           <select
-            defaultValue={bookShelf}
+            defaultValue={book.shelf}
             onChange={(e) => {
               const chosenBookShelf = e.target.value;
-              setBookShelf(chosenBookShelf)
               update(book, chosenBookShelf).then((response) => {
                 getAll().then((books) => setBooks(books))
               })
             }
             }
           >
-            <option value="none" disabled>
+            <option disabled>
               Move to...
             </option>
             <option value="currentlyReading">Currently Reading</option>
