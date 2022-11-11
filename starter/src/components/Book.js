@@ -4,6 +4,7 @@ import { update, getAll } from '../BooksAPI';
 
 export default function Book({ book, setBooks }) {
   const [bookShelf, setBookShelf] = useState(book.shelf || 'none');
+  const fallbackThumbnailLink = 'http://books.google.com/books/content?id=nggnmAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
   return (
     <div className="book">
       <div className="book-top">
@@ -12,7 +13,7 @@ export default function Book({ book, setBooks }) {
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${book.imageLinks.thumbnail})`,
+            backgroundImage: `url(${book.imageLinks?.thumbnail || fallbackThumbnailLink})`,
           }}
         ></div>
         <div className="book-shelf-changer">
@@ -21,7 +22,7 @@ export default function Book({ book, setBooks }) {
             onChange={(e) => {
               const chosenBookShelf = e.target.value;
               setBookShelf(chosenBookShelf)
-              update(book, chosenBookShelf).then(() => {
+              update(book, chosenBookShelf).then((response) => {
                 getAll().then((books) => setBooks(books))
               })
             }
