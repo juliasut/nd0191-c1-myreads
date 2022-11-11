@@ -21,6 +21,8 @@ function App() {
         <Search
           setShowSearchpage={setShowSearchpage}
           showSearchPage={showSearchPage}
+          setBooks={setBooks}
+          books={books}
         />
       ) : (
         <HomePage
