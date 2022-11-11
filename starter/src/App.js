@@ -10,7 +10,6 @@ function App() {
 
   useEffect(() => {
     getAll().then((books) => {
-      console.log(books)
       setBooks(books);
     });
   }, []);
